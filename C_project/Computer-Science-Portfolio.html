@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lincon Cipher -Portfolio</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#1e3a8a',secondary:'#64748b'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href=".css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .typing-effect {
+            border-right: 3px solid #1e3a8a;
+            animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #1e3a8a }
+        }
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e5e7eb;
+            position: relative;
+            overflow: hidden;
+        }
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            background-color: #1e3a8a;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #1e3a8a;
+        }
+        /* Google Maps API is commented out in this content */
+        /* Google Maps API styles */
+        .map-container {
+            width: 100%;
+            height: 400px;
+            position: relative;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="fixed top-0 left-0 right-0 bg-white shadow-sm z-50">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-['Pacifico'] text-primary">Louis Lincolyn</a>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="text-gray-800 hover:text-primary font-medium transition-colors">Home</a>
+                <a href="#about" class="text-gray-800 hover:text-primary font-medium transition-colors">About</a>
+                <a href="#skills" class="text-gray-800 hover:text-primary font-medium transition-colors">Skills</a>
+                <a href="#projects" class="text-gray-800 hover:text-primary font-medium transition-colors">Projects</a>
+                <a href="#contact" class="text-gray-800 hover:text-primary font-medium transition-colors">Contact</a>
+            </nav>
+            
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden w-10 h-10 flex items-center justify-center cursor-pointer" id="menuButton">
+                <i class="ri-menu-line ri-lg text-gray-800"></i>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div class="md:hidden hidden bg-white shadow-lg absolute w-full" id="mobileMenu">
+            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a href="#home" class="text-gray-800 hover:text-primary font-medium transition-colors py-2">Home</a>
+                <a href="#about" class="text-gray-800 hover:text-primary font-medium transition-colors py-2">About</a>
+                <a href="#skills" class="text-gray-800 hover:text-primary font-medium transition-colors py-2">Skills</a>
+                <a href="#projects" class="text-gray-800 hover:text-primary font-medium transition-colors py-2">Projects</a>
+                <a href="#contact" class="text-gray-800 hover:text-primary font-medium transition-colors py-2">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="w-full min-h-screen flex items-center justify-center pt-16" style="background-image: url('https://public.readdy.ai/ai/img_res/4c5e4ceca7bef2957c58843795f7f635.jpg'); background-size: cover; background-position: center;">
+        <div class="w-full bg-white bg-opacity-90 py-20">
+            <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+                <div class="w-full md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">Louis Lincolyn</h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold text-primary mb-6">Computer Scientist</h2>
+                    <div class="h-12 overflow-hidden mb-8">
+                        <p class="typing-effect text-lg md:text-xl text-gray-700">DBMS Expert | Python Developer | Backend Engineer</p>
+                    </div>
+                    <p class="text-gray-700 text-lg mb-8 max-w-lg">Passionate about building robust backend systems and database solutions. Specialized in Django, Python, and SQL Server with a strong foundation in computer science principles.</p>
+                    <a href="#" class="inline-flex items-center bg-primary text-white px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-primary/90 transition-colors">
+                        <i class="ri-download-line ri-lg mr-2"></i>
+                        Download Resume
+                    </a>
+                </div>
+                <div class="w-full md:w-1/2 flex justify-center">
+                    <div class="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
+                        <img src="lilcipher.jpeg.jpg" alt="Lincon Cipher" class="w-full h-full object-cover object-top">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-900">About Me</h2>
+            
+            <div class="flex flex-col md:flex-row gap-10">
+                <div class="w-full md:w-1/2">
+                    <h3 class="text-2xl font-semibold mb-6 text-gray-800">Professional Summary</h3>
+                    <p class="text-gray-700 mb-6 leading-relaxed">
+                        I'm a Software Developer with over 6 months of experience specializing in backend development and database management. My passion lies in building efficient, scalable systems that solve real-world problems.
+                    </p>
+                    <p class="text-gray-700 mb-10 leading-relaxed">
+                        With a strong foundation in computer science principles and practical experience across various technologies, I approach each project with a focus on clean code, performance optimization, and user-centered design.
+                    </p>
+                    
+                    <h3 class="text-2xl font-semibold mb-6 text-gray-800">Education & Certifications</h3>
+                    <div class="space-y-6">
+                        <div class="bg-gray-50 p-6 rounded shadow-sm">
+                            <div class="flex items-start mb-2">
+                                <div class="w-10 h-10 flex items-center justify-center bg-primary rounded-full text-white mr-4">
+                                    <i class="ri-graduation-cap-line ri-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Diploma in Computer Science</h4>
+                                    <p class="text-gray-600">Ziwa Technical, 2021-2023</p>
+                                </div>
+                            </div>
+                            <p class="text-gray-700 ml-14">Specialized in Database Systems and Python Programming</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Barchelor of Science in Computer Science</h4>
+                            <p class="text-gray-600">University of Eldoret 2023-2025</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 ml-14">Specialized in Web Design and Backend Engineering</p>
+                </div>
+                        
+                        <div class="bg-gray-50 p-6 rounded shadow-sm">
+                            <div class="flex items-start mb-2">
+                                <div class="w-10 h-10 flex items-center justify-center bg-primary rounded-full text-white mr-4">
+                                    <i class="ri-graduation-cap-line ri-lg"></i>
+                                </div>
+                               
+                                <div>
+                                    <h4 class="font-semibold text-gray-800">Certified Python Developer</h4>
+                                    <p class="text-gray-600">PLP, 2025</p>
+                    </div>
+                </div>
+                
+                <div class="w-full md:w-1/2">
+                    <h3 class="text-2xl font-semibold mb-6 text-gray-800">Areas of Expertise</h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="bg-gray-50 p-6 rounded shadow-sm">
+                            <div class="w-14 h-14 flex items-center justify-center bg-primary/10 rounded-full text-primary mb-4">
+                                <i class="ri-database-2-line ri-2x"></i>
+                            </div>
+                            <h4 class="font-semibold text-lg text-gray-800 mb-2">Database Management</h4>
+                            <p class="text-gray-700">Expert in designing, optimizing, and managing SQL Server databases with a focus on performance and security.</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-6 rounded shadow-sm">
+                            <div class="w-14 h-14 flex items-center justify-center bg-primary/10 rounded-full text-primary mb-4">
+                                <i class="ri-code-s-slash-line ri-2x"></i>
+                            </div>
+                            <h4 class="font-semibold text-lg text-gray-800 mb-2">Python Development</h4>
+                            <p class="text-gray-700">Proficient in Python programming with expertise in data structures, algorithms, and application development.</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-6 rounded shadow-sm">
+                            <div class="w-14 h-14 flex items-center justify-center bg-primary/10 rounded-full text-primary mb-4">
+                                <i class="ri-server-line ri-2x"></i>
+                            </div>
+                            <h4 class="font-semibold text-lg text-gray-800 mb-2">Backend Engineering</h4>
+                            <p class="text-gray-700">Specialized in building robust backend systems using Django, creating RESTful APIs, and implementing efficient data flows.</p>
+                        </div>
+                        
+                        <div class="bg-gray-50 p-6 rounded shadow-sm">
+                            <div class="w-14 h-14 flex items-center justify-center bg-primary/10 rounded-full text-primary mb-4">
+                                <i class="ri-java-fill ri-2x"></i>
+                            </div>
+                            <h4 class="font-semibold text-lg text-gray-800 mb-2">Java Development</h4>
+                            <p class="text-gray-700">Experience with Java programming for enterprise applications, with knowledge of  OOP principles.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-10 bg-gray-50 p-6 rounded shadow-sm">
+                        <h4 class="font-semibold text-lg text-gray-800 mb-4">Work Experience</h4>
+                        <div class="space-y-6">
+                            <div class="flex">
+                                <div class="w-10 h-10 flex items-center justify-center bg-primary rounded-full text-white mr-4 mt-1 flex-shrink-0">
+                                    <i class="ri-briefcase-line ri-lg"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold text-gray-800">Python Programmer </h5>
+                                    <p class="text-gray-600 mb-2">Ziwa Tech, 2023-present</p>
+                                    <p class="text-gray-700">Leading Systems development for enterprise applications, focusing on database optimization and API development.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex">
+                                <div class="w-10 h-10 flex items-center justify-center bg-primary rounded-full text-white mr-4 mt-1 flex-shrink-0">
+                                    <i class="ri-briefcase-line ri-lg"></i>
+                                </div>
+                                <div>
+                                    <h5 class="font-semibold text-gray-800">Database Engineer</h5>
+                                    <p class="text-gray-600 mb-2">Ziwa Tech., 2022-2023</p>
+                                    <p class="text-gray-700">Designed and maintained database systems, implemented data migration strategies, and optimized query performance.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-900">Technical Skills</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div>
+                    <h3 class="text-2xl font-semibold mb-8 text-gray-800">Backend Development</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">Django</span>
+                                <span class="text-gray-600">65%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 65%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">SQL Server</span>
+                                <span class="text-gray-600">75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">RESTful APIs</span>
+                                <span class="text-gray-600">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-2xl font-semibold mt-12 mb-8 text-gray-800">Database Management</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">SQL</span>
+                                <span class="text-gray-600">80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">Database Design</span>
+                                <span class="text-gray-600">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">Query Optimization</span>
+                                <span class="text-gray-600">55%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 55%"></div>
+                            </div>
+                        </div>
+  
+                <div>
+                    <h3 class="text-2xl font-semibold mb-8 text-gray-800">Programming Languages</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">Python</span>
+                                <span class="text-gray-600">70%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">Java</span>
+                                <span class="text-gray-600">60%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 60%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">JavaScript</span>
+                                <span class="text-gray-600">35%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 35%"></div>
+                            </div>
+                        </div>
+                    
+                    <h3 class="text-2xl font-semibold mt-12 mb-8 text-gray-800">Web Technologies</h3>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">HTML/CSS</span>
+                                <span class="text-gray-600">83%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 83%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">REST Architecture</span>
+                                <span class="text-gray-600">10%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 10%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">API Design</span>
+                                <span class="text-gray-600">5%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 5%"></div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="flex justify-between mb-2">
+                                <span class="font-medium text-gray-800">Django</span>
+                                <span class="text-gray-600">65%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 65%"></div>
+                            </div>
+                        </div>
+            <div class="mt-16 flex flex-wrap justify-center gap-4">
+                <div class="bg-white py-3 px-6 rounded shadow-sm flex items-center">
+                    <div class="w-10 h-10 flex items-center justify-center text-primary mr-3">
+                        <i class="ri-git-branch-line ri-lg"></i>
+                    </div>
+                    <span class="font-medium text-gray-800">Git</span>
+                </div>
+                
+                
+                <div class="bg-white py-3 px-6 rounded shadow-sm flex items-center">
+                    <div class="w-10 h-10 flex items-center justify-center text-primary mr-3">
+                        <i class="ri-cloud-line ri-lg"></i>
+                    </div>
+                    <span class="font-medium text-gray-800">AWS</span>
+                </div>
+               
+                <div class="bg-white py-3 px-6 rounded shadow-sm flex items-center">
+                    <div class="w-10 h-10 flex items-center justify-center text-primary mr-3">
+                        <i class="ri-test-tube-line ri-lg"></i>
+                    </div>
+                    <span class="font-medium text-gray-800">Unit Testing</span>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 text-gray-900">My Projects</h2>
+            <p class="text-gray-700 text-center mb-16 max-w-2xl mx-auto">A selection of my recent work showcasing my skills in backend development, database management, and programming.</p>
+            
+            <div class="flex justify-center mb-10">
+                <div class="inline-flex bg-gray-100 rounded-full p-1">
+                    <button class="px-4 py-2 rounded-full bg-primary text-white !rounded-button whitespace-nowrap font-medium" id="filter-all">All Projects</button>
+                    <button class="px-4 py-2 rounded-full text-gray-700 hover:bg-gray-200 !rounded-button whitespace-nowrap font-medium" id="filter-python">Python</button>
+                    <button class="px-4 py-2 rounded-full text-gray-700 hover:bg-gray-200 !rounded-button whitespace-nowrap font-medium" id="filter-database">Database</button>
+                    <button class="px-4 py-2 rounded-full text-gray-700 hover:bg-gray-200 !rounded-button whitespace-nowrap font-medium" id="filter-web">Web</button>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="bg-gray-50 rounded overflow-hidden shadow-sm transition-transform hover:shadow-md hover:-translate-y-1 group" data-category="python database">
+                    <div class="h-48 overflow-hidden">
+                        <img src="https://public.readdy.ai/ai/img_res/de93866884d097e4f092e3aa669ffe35.jpg" alt="Database Management System" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-2">Advanced Database Management System</h3>
+                        <p class="text-gray-700 mb-4">A comprehensive database management system with advanced query optimization, data visualization, and automated backup features.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Python</span>
+                            <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">SQL Server</span>
+                            <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded">Django</span>
+                        </div>
+                        <a href="#" class="inline-flex items-center text-primary font-medium hover:text-primary/80 transition-colors">
+                            View Project
+                            <i class="ri-arrow-right-line ri-lg ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+              
+              
+          
+            <div class="mt-12 text-center">
+                <a href="#" class="inline-flex items-center bg-primary text-white px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-primary/90 transition-colors">
+                    View All Projects
+                    <i class="ri-arrow-right-line ri-lg ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-6 text-gray-900">Get In Touch</h2>
+            <p class="text-gray-700 text-center mb-16 max-w-2xl mx-auto">Have a project in mind or want to discuss potential opportunities? Feel free to reach out!</p>
+            
+            <div class="flex flex-col md:flex-row gap-10">
+                <div class="w-full md:w-1/2">
+                    <form class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 bg-white border border-gray-300 rounded focus:border-primary" placeholder="Lincon Cipher">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 bg-white border border-gray-300 rounded focus:border-primary" placeholder="Lincon@Cipher.com">
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-3 bg-white border border-gray-300 rounded focus:border-primary" placeholder="Project Inquiry">
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-3 bg-white border border-gray-300 rounded focus:border-primary" placeholder="Tell me about your project..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="bg-primary text-white px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-primary/90 transition-colors">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="w-full md:w-1/2">
+                    <div class="bg-white p-8 rounded shadow-sm h-full">
+                        <h3 class="text-2xl font-semibold mb-6 text-gray-800">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary mr-4">
+                                    <i class="ri-mail-line ri-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Email</h4>
+                                    <a href="# "class="text-primary hover:underline">cipherdev401@gmail.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary mr-4">
+                                    <i class="ri-phone-line ri-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Phone</h4>
+                                    <p class="text-gray-700">+(254) 727 736 376</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary mr-4">
+                                    <i class="ri-map-pin-line ri-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Location</h4>
+                                    <p class="text-gray-700">Eldoret City, Kenya</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary mr-4">
+                                    <i class="ri-time-line ri-lg"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Availability</h4>
+                                    <p class="text-gray-700">Monday - Friday, 9:00 AM - 6:00 PM EAT</p>
+                                </div>
+                            </div>
+            
+                        
+                        <div class="mt-8">
+                            <h4 class="font-medium text-gray-800 mb-4">Connect With Me</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary hover:bg-primary hover:text-white transition-colors">
+                                    <i class="ri-github-fill ri-lg"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary hover:bg-primary hover:text-white transition-colors">
+                                    <i class="ri-linkedin-fill ri-lg"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary hover:bg-primary hover:text-white transition-colors">
+                                    <i class="ri-twitter-fill ri-lg"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 flex items-center justify-center bg-primary/10 rounded-full text-primary hover:bg-primary hover:text-white transition-colors">
+                                    <i class="ri-medium-fill ri-lg"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+            
+            <div class="mt-16">
+                <div class="bg-white rounded shadow-sm overflow-hidden h-80">
+                    <div style="background-image: url('https://public.readdy.ai/gen_page/map_placeholder_1280x720.png'); background-size: cover; background-position: center; width: 100%; height: 100%;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <a href="#" class="text-2xl font-['Pacifico'] text-white mb-6 md:mb-0">Lincon Cipher</a>
+                
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="ri-github-fill ri-lg"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="ri-linkedin-fill ri-lg"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="ri-twitter-fill ri-lg"></i>
+                    </a>
+                    
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 mb-4 md:mb-0">&copy; 2025 Lincon Cipher. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="fixed bottom-6 right-6 w-12 h-12 flex items-center justify-center bg-primary text-white rounded-full shadow-lg opacity-0 invisible transition-all duration-300">
+        <i class="ri-arrow-up-line ri-lg"></i>
+    </button>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuButton = document.getElementById('menuButton');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            if (menuButton.querySelector('i').classList.contains('ri-menu-line')) {
+                menuButton.querySelector('i').classList.replace('ri-menu-line', 'ri-close-line');
+            } else {
+                menuButton.querySelector('i').classList.replace('ri-close-line', 'ri-menu-line');
+            }
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuButton.querySelector('i').classList.replace('ri-close-line', 'ri-menu-line');
+            });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Project Filtering
+        const filterButtons = document.querySelectorAll('[id^="filter-"]');
+        const projectCards = document.querySelectorAll('[data-category]');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Reset all buttons
+                filterButtons.forEach(btn => {
+                    btn.classList.remove('bg-primary', 'text-white');
+                    btn.classList.add('text-gray-700', 'hover:bg-gray-200');
+                });
+                
+                // Activate clicked button
+                button.classList.remove('text-gray-700', 'hover:bg-gray-200');
+                button.classList.add('bg-primary', 'text-white');
+                
+                const category = button.id.replace('filter-', '');
+                
+                // Show/hide projects based on category
+                projectCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category.includes(category)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Back to Top Button
+        const backToTopButton = document.getElementById('backToTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.remove('opacity-0', 'invisible');
+                backToTopButton.classList.add('opacity-100', 'visible');
+            } else {
+                backToTopButton.classList.remove('opacity-100', 'visible');
+                backToTopButton.classList.add('opacity-0', 'invisible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Typing Effect Animation
+        const typingText = document.querySelector('.typing-effect');
+        const phrases = ["DBMS Expert", "Python Developer", "Backend Engineer"];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+        
+        function typeEffect() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                // Remove character
+                typingText.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+                typingSpeed = 50;
+            } else {
+                // Add character
+                typingText.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = 150;
+            }
+            
+            // If word is complete, start deleting
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                isDeleting = true;
+                typingSpeed = 1000; // Pause at end
+            } 
+            // If deletion is complete, move to next word
+            else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typingSpeed = 500; // Pause before typing next word
+            }
+            
+            setTimeout(typeEffect, typingSpeed);
+        }
+        
+        // Start the typing effect
+        setTimeout(typeEffect, 1000);
+    </script>
+</body>
+</html>
